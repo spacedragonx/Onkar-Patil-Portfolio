@@ -4,8 +4,6 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ensures assets are linked relatively (essential for GitHub Pages)
-  build: {
-    outDir: 'docs', // Output build files to 'docs' folder instead of 'dist'
-  }
+  base: './', // Ensures relative paths for assets
+  // No specific outDir needed for Vercel; it defaults to 'dist'
 })
