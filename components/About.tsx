@@ -22,7 +22,7 @@ export const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Description & Background */}
-          <div className="lg:col-span-6 space-y-6 text-ink-secondary text-base leading-relaxed font-sans">
+          <div className="lg:col-span-6 space-y-6 text-ink-secondary text-[16px] sm:text-[17px] leading-relaxed font-sans">
             <p>
               I am a Computer Science undergraduate with a deep focus on <strong className="text-ink font-semibold">machine learning, systems programming, and backend architecture</strong>. Rather than treating tools as black boxes, I like taking them apart to understand memory layouts, gradients, and latency bottlenecks.
             </p>
@@ -36,9 +36,9 @@ export const About: React.FC = () => {
             </p>
 
             {/* Notebook Margin Annotation */}
-            <div className="pt-6 border-t border-paper-border font-mono text-xs text-ink-muted space-y-1">
-              <div>FIELD NOTE: ENGINEERING PHILOSOPHY</div>
-              <div className="text-ink italic font-serif text-sm">
+            <div className="pt-6 border-t border-paper-border font-mono text-xs text-ink-muted space-y-1.5">
+              <div className="uppercase tracking-wider">Field Note · Engineering Philosophy</div>
+              <div className="text-ink italic font-serif text-[15.5px] leading-relaxed">
                 "Simple systems that you understand completely are more valuable than complex systems that surprise you in production."
               </div>
             </div>
@@ -49,7 +49,7 @@ export const About: React.FC = () => {
             <div className="bg-paper-card border border-paper-border rounded-lg p-6 space-y-6 shadow-sm">
               <div className="flex items-center justify-between pb-3 border-b border-paper-border text-xs">
                 <span className="font-mono text-ink-muted">EXPLORATION MATRIX</span>
-                <span className="font-mono text-[11px] text-cobalt">Active Areas of Interest</span>
+                <span className="font-mono text-xs text-cobalt font-medium">Active Areas of Interest</span>
               </div>
 
               <div className="space-y-4">
@@ -58,15 +58,15 @@ export const About: React.FC = () => {
                     key={area.code}
                     className="p-3.5 bg-paper rounded border border-paper-border hover:border-paper-darkborder transition-colors"
                   >
-                    <div className="flex items-baseline gap-2 mb-1">
-                      <span className="font-mono text-xs text-cobalt font-semibold">
+                    <div className="flex items-baseline gap-2 mb-1.5">
+                      <span className="font-mono text-xs text-cobalt font-bold">
                         {area.code}.
                       </span>
-                      <h3 className="font-sans font-bold text-sm text-ink">
+                      <h3 className="font-sans font-bold text-[15px] text-ink">
                         {area.title}
                       </h3>
                     </div>
-                    <p className="text-xs text-ink-secondary leading-relaxed pl-5 font-sans">
+                    <p className="text-[13.5px] text-ink-secondary leading-relaxed pl-5 font-sans">
                       {area.note}
                     </p>
                   </div>

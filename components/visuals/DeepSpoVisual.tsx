@@ -169,9 +169,9 @@ export const DeepSpoVisual: React.FC = () => {
                   className="w-2 h-2 rounded-xs inline-block shrink-0"
                   style={{ backgroundColor: item.color }}
                 />
-                <span className="text-[11px] text-ink-secondary truncate">{item.name}</span>
+                <span className="text-xs text-ink-secondary truncate">{item.name}</span>
               </div>
-              <span className="font-mono text-xs font-semibold text-ink tabular-nums">
+              <span className="font-mono text-[13px] font-semibold text-ink tabular-nums">
                 {item.weight}%
               </span>
             </div>
@@ -182,35 +182,35 @@ export const DeepSpoVisual: React.FC = () => {
       {/* Quantitative performance metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
         <div className="bg-paper-subtle p-2.5 rounded border border-paper-border">
-          <div className="text-[10px] font-mono text-ink-muted uppercase mb-1">Model Sharpe</div>
-          <div className="font-mono text-sm font-bold text-ink tabular-nums">{current.sharpeRatio}</div>
-          <div className="text-[10px] text-ink-muted">vs 1.12 benchmark</div>
+          <div className="text-[11px] font-mono text-ink-muted uppercase mb-1">Model Sharpe</div>
+          <div className="font-mono text-base font-bold text-ink tabular-nums">{current.sharpeRatio}</div>
+          <div className="text-[11px] text-ink-muted">vs 1.12 benchmark</div>
         </div>
 
         <div className="bg-paper-subtle p-2.5 rounded border border-paper-border">
-          <div className="text-[10px] font-mono text-ink-muted uppercase mb-1">Annualized Return</div>
-          <div className="font-mono text-sm font-bold text-ink tabular-nums">{current.expectedReturn}%</div>
-          <div className="text-[10px] text-ink-muted">Sequential rolling avg</div>
+          <div className="text-[11px] font-mono text-ink-muted uppercase mb-1">Annualized Return</div>
+          <div className="font-mono text-base font-bold text-ink tabular-nums">{current.expectedReturn}%</div>
+          <div className="text-[11px] text-ink-muted">Sequential rolling avg</div>
         </div>
 
         <div className="bg-paper-subtle p-2.5 rounded border border-paper-border">
-          <div className="text-[10px] font-mono text-ink-muted uppercase mb-1">Portfolio Volatility</div>
-          <div className="font-mono text-sm font-bold text-ink tabular-nums">{current.volatility}%</div>
-          <div className="text-[10px] text-ink-muted">Risk constrained</div>
+          <div className="text-[11px] font-mono text-ink-muted uppercase mb-1">Portfolio Volatility</div>
+          <div className="font-mono text-base font-bold text-ink tabular-nums">{current.volatility}%</div>
+          <div className="text-[11px] text-ink-muted">Risk constrained</div>
         </div>
 
         <div className="bg-paper-subtle p-2.5 rounded border border-paper-border">
-          <div className="text-[10px] font-mono text-ink-muted uppercase mb-1">Friction Cost</div>
-          <div className="font-mono text-sm font-bold text-ink tabular-nums">-{current.transactionCostPenalty}%</div>
-          <div className="text-[10px] text-ink-muted">Turnover penalty</div>
+          <div className="text-[11px] font-mono text-ink-muted uppercase mb-1">Friction Cost</div>
+          <div className="font-mono text-base font-bold text-ink tabular-nums">-{current.transactionCostPenalty}%</div>
+          <div className="text-[11px] text-ink-muted">Turnover penalty</div>
         </div>
       </div>
 
       {/* Context note */}
-      <div className="text-[11px] text-ink-secondary bg-paper p-2.5 rounded border border-paper-border flex items-start gap-2">
-        <span className="font-mono text-cobalt font-semibold text-xs mt-0.5">ℹ</span>
+      <div className="text-[13px] text-ink-secondary bg-paper p-3 rounded border border-paper-border flex items-start gap-2.5 leading-relaxed">
+        <span className="font-mono text-cobalt font-semibold text-sm mt-0.5">ℹ</span>
         <span>
-          <strong className="text-ink">Market Observation:</strong> {current.marketContext}
+          <strong className="text-ink font-semibold">Market Observation:</strong> {current.marketContext}
         </span>
       </div>
     </div>

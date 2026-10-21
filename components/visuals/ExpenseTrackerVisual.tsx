@@ -122,24 +122,24 @@ export const ExpenseTrackerVisual: React.FC = () => {
           {/* Parser status controls */}
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3 text-xs">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-[11px] text-ink-muted">
+              <span className="font-mono text-xs text-ink-muted">
                 INGESTION: <strong className="text-ink">Oct_Statement.csv</strong>
               </span>
               <span className="text-ink-muted">·</span>
-              <span className="font-mono text-[11px] text-ink-secondary">
+              <span className="font-mono text-xs text-ink-secondary">
                 {displayedTransactions.length} records shown
               </span>
             </div>
 
             <button
               onClick={() => setFilterDuplicates(!filterDuplicates)}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded border transition-colors flex items-center gap-1.5 ${
+              className={`px-2.5 py-1 text-xs font-mono rounded border transition-colors flex items-center gap-1.5 ${
                 filterDuplicates
                   ? 'border-emerald-600/30 bg-emerald-50 text-emerald-800'
                   : 'border-amber-600/30 bg-amber-50 text-amber-800'
               }`}
             >
-              <ShieldCheck size={13} />
+              <ShieldCheck size={14} />
               <span>
                 {filterDuplicates
                   ? `Duplicate Filter: ON (${duplicatesCount} suppressed)`
@@ -151,16 +151,16 @@ export const ExpenseTrackerVisual: React.FC = () => {
           {/* Transaction Ledger Table */}
           <div className="overflow-x-auto border border-paper-border rounded bg-paper">
             <table className="w-full text-left text-xs">
-              <thead className="bg-paper-subtle border-b border-paper-border font-mono text-[10px] text-ink-muted uppercase">
+              <thead className="bg-paper-subtle border-b border-paper-border font-mono text-[11px] text-ink-muted uppercase">
                 <tr>
-                  <th className="py-2 px-3">Date</th>
-                  <th className="py-2 px-3">Raw Merchant Input</th>
-                  <th className="py-2 px-3">Normalized Category</th>
-                  <th className="py-2 px-3">Hash Signature</th>
-                  <th className="py-2 px-3 text-right">Amount</th>
+                  <th className="py-2.5 px-3">Date</th>
+                  <th className="py-2.5 px-3">Raw Merchant Input</th>
+                  <th className="py-2.5 px-3">Normalized Category</th>
+                  <th className="py-2.5 px-3">Hash Signature</th>
+                  <th className="py-2.5 px-3 text-right">Amount</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-paper-border font-mono text-[11px]">
+              <tbody className="divide-y divide-paper-border font-mono text-xs">
                 {displayedTransactions.map((tx) => {
                   const isDuplicate = tx.status === 'duplicate_flagged';
                   return (
@@ -168,25 +168,25 @@ export const ExpenseTrackerVisual: React.FC = () => {
                       key={tx.id}
                       className={isDuplicate ? 'bg-amber-50/70 text-amber-900' : 'hover:bg-white'}
                     >
-                      <td className="py-2 px-3 text-ink-muted tabular-nums whitespace-nowrap">
+                      <td className="py-2.5 px-3 text-ink-muted tabular-nums whitespace-nowrap">
                         {tx.rawDate}
                       </td>
-                      <td className="py-2 px-3 font-sans font-medium text-ink truncate max-w-[150px]">
+                      <td className="py-2.5 px-3 font-sans font-medium text-ink truncate max-w-[160px]">
                         {tx.rawMerchant}
                       </td>
-                      <td className="py-2 px-3 font-sans text-ink-secondary">
-                        <span className="text-[11px]">{tx.normalizedCategory}</span>
+                      <td className="py-2.5 px-3 font-sans text-ink-secondary">
+                        <span className="text-xs">{tx.normalizedCategory}</span>
                       </td>
-                      <td className="py-2 px-3 text-ink-muted text-[10px] tabular-nums whitespace-nowrap">
+                      <td className="py-2.5 px-3 text-ink-muted text-[11px] tabular-nums whitespace-nowrap">
                         {tx.hashSignature}
                         {isDuplicate && (
-                          <span className="ml-1 text-[9px] text-amber-700 bg-amber-100 px-1 py-0.5 rounded">
-                            DUPLICATE HASH
+                          <span className="ml-1 text-[10px] text-amber-700 bg-amber-100 px-1 py-0.5 rounded font-mono">
+                            DUPLICATE
                           </span>
                         )}
                       </td>
                       <td
-                        className={`py-2 px-3 text-right font-semibold tabular-nums whitespace-nowrap ${
+                        className={`py-2.5 px-3 text-right font-semibold tabular-nums whitespace-nowrap ${
                           tx.type === 'credit' ? 'text-emerald-700' : 'text-ink'
                         }`}
                       >
@@ -200,25 +200,25 @@ export const ExpenseTrackerVisual: React.FC = () => {
           </div>
 
           {/* Engine Note */}
-          <div className="mt-3 text-[11px] text-ink-muted flex items-center justify-between font-mono">
+          <div className="mt-3 text-xs text-ink-muted flex flex-wrap items-center justify-between gap-1 font-mono">
             <span>DETERMINISTIC FINGERPRINT: SHA-256(date + merchant + amount)</span>
-            <span className="text-cobalt">Zero Duplicate Ingestion</span>
+            <span className="text-cobalt font-medium">Zero Duplicate Ingestion</span>
           </div>
         </div>
       ) : (
         /* Breakdown view */
         <div className="space-y-3">
-          <div className="text-xs font-semibold text-ink mb-1">
+          <div className="text-sm font-semibold text-ink mb-1">
             Budget Burn & Category Ledger (Monthly Allocation)
           </div>
 
           {CATEGORY_TOTALS.map((cat, idx) => (
             <div key={idx} className="bg-paper p-3 rounded border border-paper-border text-xs">
               <div className="flex items-center justify-between mb-1.5">
-                <span className="font-medium text-ink">{cat.name}</span>
-                <span className="font-mono text-ink tabular-nums font-semibold">
+                <span className="font-medium text-ink text-[13px]">{cat.name}</span>
+                <span className="font-mono text-ink tabular-nums font-semibold text-xs">
                   ${cat.amount.toFixed(2)}{' '}
-                  <span className="text-ink-muted text-[10px] font-normal">/ ${cat.budget.toFixed(2)} limit</span>
+                  <span className="text-ink-muted text-[11px] font-normal">/ ${cat.budget.toFixed(2)} limit</span>
                 </span>
               </div>
               <div className="h-1.5 bg-paper-border rounded-full overflow-hidden mb-1">
@@ -227,7 +227,7 @@ export const ExpenseTrackerVisual: React.FC = () => {
                   style={{ width: `${(cat.amount / cat.budget) * 100}%` }}
                 />
               </div>
-              <div className="flex items-center justify-between text-[10px] font-mono text-ink-muted">
+              <div className="flex items-center justify-between text-[11px] font-mono text-ink-muted">
                 <span>{( (cat.amount / cat.budget) * 100 ).toFixed(0)}% utilized</span>
                 <span>${(cat.budget - cat.amount).toFixed(2)} remaining</span>
               </div>

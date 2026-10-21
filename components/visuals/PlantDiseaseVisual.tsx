@@ -149,10 +149,10 @@ export const PlantDiseaseVisual: React.FC = () => {
                 <span className="font-mono text-[11px] text-ink-muted uppercase">Stage 01</span>
                 <span className="font-mono text-[10px] text-cobalt">Input Vector</span>
               </div>
-              <p className="text-xs font-semibold text-ink mb-1">{current.name}</p>
-              <p className="text-[11px] text-ink-muted italic mb-3 font-serif">{current.scientificName}</p>
+              <p className="text-[13px] font-semibold text-ink mb-1">{current.name}</p>
+              <p className="text-xs text-ink-muted italic mb-3 font-serif">{current.scientificName}</p>
             </div>
-            <div className="pt-2 border-t border-paper-border font-mono text-[10px] text-ink-secondary space-y-1">
+            <div className="pt-2 border-t border-paper-border font-mono text-[11px] text-ink-secondary space-y-1">
               <div>Resolution: <span className="text-ink">224 × 224 px</span></div>
               <div>Augmentation: <span className="text-ink">Affine + Flip + Jitter</span></div>
             </div>
@@ -163,19 +163,19 @@ export const PlantDiseaseVisual: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-[11px] text-ink-muted uppercase">Stage 02</span>
-                <span className="font-mono text-[10px] text-cobalt">Feature Activation</span>
+                <span className="font-mono text-xs text-cobalt font-medium">Feature Activation</span>
               </div>
-              <p className="text-xs font-semibold text-ink mb-2">ResNet-34 Conv Layers</p>
-              <ul className="text-[11px] text-ink-secondary space-y-1 mb-2">
+              <p className="text-[13px] font-semibold text-ink mb-2">ResNet-34 Conv Layers</p>
+              <ul className="text-xs text-ink-secondary space-y-1.5 mb-2">
                 {current.featuresDetected.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-1.5">
-                    <span className="text-cobalt font-mono text-[10px] mt-0.5">›</span>
+                    <span className="text-cobalt font-mono text-xs mt-0.5">›</span>
                     <span className="truncate">{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="pt-2 border-t border-paper-border font-mono text-[10px] text-ink-muted truncate">
+            <div className="pt-2 border-t border-paper-border font-mono text-[11px] text-ink-muted truncate">
               Peak: <span className="text-ink">{current.resnetLayer}</span>
             </div>
           </div>
@@ -185,10 +185,10 @@ export const PlantDiseaseVisual: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-[11px] text-ink-muted uppercase">Stage 03</span>
-                <span className="font-mono text-[10px] text-cobalt">Classification</span>
+                <span className="font-mono text-xs text-cobalt font-medium">Classification</span>
               </div>
               <div className="flex items-baseline justify-between mb-1">
-                <span className="text-xs font-semibold text-ink truncate">{current.diseaseName}</span>
+                <span className="text-[13px] font-semibold text-ink truncate">{current.diseaseName}</span>
               </div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex-grow bg-paper-border h-1.5 rounded-full overflow-hidden">
@@ -202,7 +202,7 @@ export const PlantDiseaseVisual: React.FC = () => {
                 </span>
               </div>
             </div>
-            <div className="pt-2 border-t border-paper-border flex items-center justify-between font-mono text-[10px]">
+            <div className="pt-2 border-t border-paper-border flex items-center justify-between font-mono text-[11px]">
               <span className="text-ink-muted">STATUS</span>
               <span className={`font-semibold ${current.status === 'Healthy' ? 'text-emerald-700' : 'text-amber-700'}`}>
                 {current.status.toUpperCase()}
@@ -212,20 +212,20 @@ export const PlantDiseaseVisual: React.FC = () => {
         </div>
 
         {/* Agricultural Remedy Prescribed */}
-        <div className="bg-paper-subtle border border-paper-border rounded p-3 text-xs">
+        <div className="bg-paper-subtle border border-paper-border rounded p-3.5 text-xs">
           <div className="flex items-start gap-2.5">
             <div className="mt-0.5 text-cobalt">
-              <Layers size={16} />
+              <Layers size={18} />
             </div>
             <div className="flex-grow">
-              <div className="flex flex-wrap items-center justify-between gap-1 mb-1">
-                <span className="font-mono text-[11px] font-semibold text-ink uppercase tracking-wider">
+              <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
+                <span className="font-mono text-xs font-semibold text-ink uppercase tracking-wider">
                   Prescribed Agronomic Remedy:
                 </span>
-                <span className="font-mono text-[10px] text-ink-muted">Lookup Protocol #P-34</span>
+                <span className="font-mono text-[11px] text-ink-muted">Lookup Protocol #P-34</span>
               </div>
-              <p className="font-medium text-ink mb-1">{current.remedy}</p>
-              <p className="text-ink-secondary text-[11px] leading-relaxed">{current.remedyDetails}</p>
+              <p className="font-semibold text-ink text-sm mb-1">{current.remedy}</p>
+              <p className="text-ink-secondary text-[13px] leading-relaxed">{current.remedyDetails}</p>
             </div>
           </div>
         </div>

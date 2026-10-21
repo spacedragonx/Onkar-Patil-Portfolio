@@ -64,11 +64,11 @@ export const Contact: React.FC = () => {
 
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
-                  className="font-sans font-bold text-sm text-ink hover:text-cobalt transition-colors block truncate mb-1"
+                  className="font-sans font-bold text-[15px] text-ink hover:text-cobalt transition-colors block truncate mb-1"
                 >
                   {PERSONAL_INFO.email}
                 </a>
-                <p className="text-xs text-ink-secondary">
+                <p className="text-[13px] text-ink-secondary leading-relaxed">
                   Best for technical inquiries, project proposals, or engineering roles.
                 </p>
               </div>
@@ -96,11 +96,11 @@ export const Contact: React.FC = () => {
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-sans font-bold text-sm text-ink hover:text-cobalt transition-colors block mb-1"
+                  className="font-sans font-bold text-[15px] text-ink hover:text-cobalt transition-colors block mb-1"
                 >
                   github.com/spacedragonx
                 </a>
-                <p className="text-xs text-ink-secondary">
+                <p className="text-[13px] text-ink-secondary leading-relaxed">
                   Source code for systems, models, algorithmic projects, and pull requests.
                 </p>
               </div>
@@ -130,11 +130,11 @@ export const Contact: React.FC = () => {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-sans font-bold text-sm text-ink hover:text-cobalt transition-colors block mb-1"
+                  className="font-sans font-bold text-[15px] text-ink hover:text-cobalt transition-colors block mb-1"
                 >
                   Onkar Patil / LinkedIn
                 </a>
-                <p className="text-xs text-ink-secondary">
+                <p className="text-[13px] text-ink-secondary leading-relaxed">
                   Academic background, verified credentials, and networking connections.
                 </p>
               </div>
@@ -162,11 +162,11 @@ export const Contact: React.FC = () => {
 
                 <button
                   onClick={() => setIsResumeOpen(true)}
-                  className="text-left font-sans font-bold text-sm text-ink hover:text-cobalt transition-colors block mb-1"
+                  className="text-left font-sans font-bold text-[15px] text-ink hover:text-cobalt transition-colors block mb-1"
                 >
                   View & Print Resume
                 </button>
-                <p className="text-xs text-ink-secondary">
+                <p className="text-[13px] text-ink-secondary leading-relaxed">
                   Clean editorial CV overview with education, verified projects, and print export.
                 </p>
               </div>
@@ -185,14 +185,14 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Quick Notice Banner */}
-          <div className="bg-paper p-4 rounded border border-paper-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-sans text-ink-secondary">
+          <div className="bg-paper p-4 rounded border border-paper-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm font-sans text-ink-secondary">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-cobalt inline-block shrink-0" />
               <span>
                 Based in <strong className="text-ink">Pune, India</strong> · Open to remote opportunities and relocation worldwide.
               </span>
             </div>
-            <span className="font-mono text-[11px] text-ink-muted shrink-0">
+            <span className="font-mono text-xs text-ink-muted shrink-0">
               RESPONSE TIME: WITHIN 24 HOURS
             </span>
           </div>

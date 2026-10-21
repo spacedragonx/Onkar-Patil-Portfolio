@@ -58,28 +58,28 @@ export const Projects: React.FC = () => {
                       <h3 className="text-2xl sm:text-3xl font-sans font-bold text-ink tracking-tight mb-3">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-ink-secondary leading-relaxed font-normal">
+                      <p className="text-[15.5px] sm:text-base text-ink-secondary leading-relaxed font-normal">
                         {project.summary}
                       </p>
                     </div>
 
                     {/* Technical Approach block */}
-                    <div className="bg-paper p-4 rounded border border-paper-border">
-                      <div className="font-mono text-[11px] text-ink-muted uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                        <Code2 size={13} className="text-cobalt" />
+                    <div className="bg-paper p-4.5 rounded-md border border-paper-border">
+                      <div className="font-mono text-xs text-ink-muted uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <Code2 size={14} className="text-cobalt" />
                         <span>Technical Approach & Implementation:</span>
                       </div>
-                      <p className="text-xs text-ink-secondary leading-relaxed">
+                      <p className="text-sm text-ink-secondary leading-relaxed">
                         {project.technicalApproach}
                       </p>
                     </div>
 
                     {/* Technologies: Unboxed text with typographic separators */}
                     <div>
-                      <div className="font-mono text-[11px] text-ink-muted uppercase tracking-wider mb-2">
+                      <div className="font-mono text-xs text-ink-muted uppercase tracking-wider mb-2">
                         Core Technologies:
                       </div>
-                      <div className="flex flex-wrap items-center gap-y-1 gap-x-2 text-xs font-mono text-ink-secondary">
+                      <div className="flex flex-wrap items-center gap-y-1.5 gap-x-2.5 text-[13.5px] font-mono text-ink-secondary">
                         {project.technologies.map((tech, idx) => (
                           <React.Fragment key={tech}>
                             <span className="text-ink font-medium">{tech}</span>
@@ -148,7 +148,7 @@ export const Projects: React.FC = () => {
             </span>
           </div>
 
-          <p className="text-sm text-ink-secondary mb-8 max-w-2xl font-sans">
+          <p className="text-base text-ink-secondary mb-8 max-w-2xl font-sans leading-relaxed">
             Lower-level systems projects, algorithmic traversals, and open-source contributions. Click any entry to inspect implementation details.
           </p>
 
@@ -166,16 +166,16 @@ export const Projects: React.FC = () => {
                     onClick={() => toggleArchive(archive.id)}
                     className="p-4 sm:p-5 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4"
                   >
-                    <div className="flex-grow space-y-1">
+                    <div className="flex-grow space-y-1.5">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-sans font-bold text-base text-ink hover:text-cobalt transition-colors">
+                        <span className="font-sans font-bold text-base sm:text-[17px] text-ink hover:text-cobalt transition-colors">
                           {archive.title}
                         </span>
-                        <span className="font-mono text-[11px] text-ink-muted">
+                        <span className="font-mono text-xs text-ink-muted">
                           / {archive.category}
                         </span>
                       </div>
-                      <p className="text-xs text-ink-secondary leading-relaxed max-w-3xl">
+                      <p className="text-[13.5px] sm:text-sm text-ink-secondary leading-relaxed max-w-3xl">
                         {archive.description}
                       </p>
                     </div>
@@ -206,19 +206,19 @@ export const Projects: React.FC = () => {
                   {/* Expandable Architecture Note */}
                   {isExpanded && (
                     <div className="px-5 pb-5 pt-1 bg-paper border-t border-paper-border space-y-3">
-                      <div className="bg-paper-card p-3 rounded border border-paper-border text-xs">
-                        <div className="font-mono text-[10px] text-cobalt uppercase tracking-wider mb-1">
+                      <div className="bg-paper-card p-3.5 rounded border border-paper-border text-xs">
+                        <div className="font-mono text-xs text-cobalt uppercase tracking-wider mb-1.5 font-semibold">
                           Architecture & Concurrency Note:
                         </div>
-                        <p className="text-ink-secondary text-xs leading-relaxed font-sans">
+                        <p className="text-ink-secondary text-sm leading-relaxed font-sans">
                           {archive.architectureNote}
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono text-ink-secondary">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-ink-secondary">
                         <span className="text-ink-muted">Stack:</span>
                         {archive.technologies.map((t, idx) => (
-                          <span key={t} className="text-ink">
+                          <span key={t} className="text-ink font-medium">
                             {t}{idx < archive.technologies.length - 1 ? ' ·' : ''}
                           </span>
                         ))}

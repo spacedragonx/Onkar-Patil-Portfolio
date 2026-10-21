@@ -136,7 +136,7 @@ export const Hero: React.FC = () => {
               <span className="font-mono text-[11px] text-cobalt">Graph Traversal & Method</span>
             </div>
 
-            <p className="text-xs text-ink-secondary mb-4 leading-relaxed font-sans">
+            <p className="text-[13.5px] text-ink-secondary mb-4 leading-relaxed font-sans">
               A continuous thread linking initial problem formulation to verified runtime execution. Click or hover any marker to examine the method.
             </p>
 
@@ -223,14 +223,14 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Active Node Detail Note */}
-            <div className="bg-paper-subtle p-3 rounded border border-paper-border text-xs">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-mono text-[11px] font-bold text-cobalt">
+            <div className="bg-paper-subtle p-3.5 rounded border border-paper-border text-xs">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="font-mono text-xs font-bold text-cobalt">
                   {selectedNodeData.number} / {selectedNodeData.title.toUpperCase()}
                 </span>
                 <span className="font-mono text-[10px] text-ink-muted">INSPECTION</span>
               </div>
-              <p className="text-ink-secondary text-[11px] leading-relaxed">
+              <p className="text-ink-secondary text-[13px] leading-relaxed font-sans">
                 {selectedNodeData.annotation}
               </p>
             </div>
