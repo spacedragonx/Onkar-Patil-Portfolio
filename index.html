@@ -3,28 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C++ Engineer Portfolio</title>
+    <title>Onkar Patil — Software Engineer & Machine Learning</title>
+    <meta name="description" content="A distinctive, editorial personal portfolio for Onkar Patil — Computer Science student focused on AI/ML, backend engineering, and software systems. Designed with an engineer's field notebook aesthetic." />
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Onkar Patil — Software Engineer & Machine Learning" />
+    <meta property="og:description" content="I build software that turns complex problems into useful things. Computer Science, Machine Learning, and Systems Engineering." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Onkar Patil — Software Engineer & Machine Learning" />
+    <meta name="twitter:description" content="I build software that turns complex problems into useful things. Computer Science, Machine Learning, and Systems Engineering." />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
+              sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Newsreader', 'Georgia', 'serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
             },
             colors: {
-              slate: {
-                850: '#151e32',
-                900: '#0f172a',
-                950: '#020617',
+              paper: {
+                DEFAULT: '#F7F6F2',
+                card: '#FFFFFF',
+                subtle: '#F0EFEA',
+                border: '#E2DFD5',
+                darkborder: '#CFCABF',
               },
-              electric: {
-                400: '#22d3ee', // Cyan-400 equivalent for that "Electric Blue" look
-                500: '#06b6d4',
+              ink: {
+                DEFAULT: '#191919',
+                secondary: '#57554E',
+                muted: '#87847B',
+                faint: '#B8B5AB',
+              },
+              cobalt: {
+                DEFAULT: '#3455DB',
+                hover: '#2642B5',
+                wash: '#EEF2FF',
+                faint: 'rgba(52, 85, 219, 0.08)',
               }
             }
           }
@@ -32,19 +53,32 @@
       }
     </script>
     <style>
-      /* Custom scrollbar for that engineering feel */
+      /* Field notebook clean custom scrollbar */
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f172a;
+        background: #F7F6F2;
       }
       ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
+        background: #D8D4C8;
+        border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
+        background: #B8B3A4;
+      }
+      
+      /* Subtle grid paper pattern */
+      .bg-notebook-grid {
+        background-color: #F7F6F2;
+        background-image: linear-gradient(to right, rgba(25, 25, 25, 0.035) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(25, 25, 25, 0.035) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      /* Monospace numbers default tabular */
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
       }
     </style>
   <script type="importmap">
@@ -60,7 +94,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-900 text-slate-300 antialiased selection:bg-electric-400 selection:text-slate-900">
+  <body class="bg-notebook-grid text-ink antialiased selection:bg-cobalt selection:text-white min-h-screen">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

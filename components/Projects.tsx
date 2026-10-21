@@ -1,114 +1,236 @@
-import React from 'react';
-import { Github, ExternalLink } from 'lucide-react';
-
-type Project = {
-  title: string;
-  description: string;
-  tech: string[];
-  link: string;
-  featured?: boolean;
-};
-
-const projectData: Project[] = [
-  {
-    title: "Multi-threaded File Downloader",
-    description: "Engineered a high-performance downloader using C++17 and advanced synchronization techniques (mutexes, semaphores) to optimize network bandwidth utilization by splitting files into concurrent chunks.",
-    tech: ["C++17", "Multithreading", "HTTP", "Mutex"],
-    link: "https://github.com/spacedragonx/File-Downloader",
-    featured: true
-  },
-  {
-    title: "Microsoft Presidio Contributor",
-    description: "Contributed to this major open-source security project by optimizing regex patterns and improving PII detection accuracy. Focused on reducing false positives in text analysis pipelines.",
-    tech: ["Python", "Regex", "Security", "Open Source"],
-    link: "https://github.com/microsoft/presidio/pull/1532",
-    featured: true
-  },
-  {
-    title: "Pune Bus Route Navigator",
-    description: "A C++ navigation engine utilizing Dijkstra’s algorithm and custom STL data structures to calculate optimal routes in dense public transit networks with sub-millisecond query responses.",
-    tech: ["C++", "STL", "Graph Theory", "Algorithms"],
-    link: "https://github.com/spacedragonx/Pune-Bus-Traversal"
-  },
-  {
-    title: "Plant Disease Detection",
-    description: "Developed a ResNet-34 based AI model using PyTorch and Transfer Learning to detect plant diseases from leaf images, achieving 96% validation accuracy on a custom dataset.",
-    tech: ["PyTorch", "Python", "Deep Learning", "ResNet"],
-    link: "https://github.com/spacedragonx/PDD"
-  }
-];
+import React, { useState } from 'react';
+import { ExternalLink, Github, ArrowUpRight, ChevronDown, ChevronUp, Code2 } from 'lucide-react';
+import { FEATURED_PROJECTS, ARCHIVE_PROJECTS, Project, ArchiveProject } from '../portfolioData';
+import { PlantDiseaseVisual } from './visuals/PlantDiseaseVisual';
+import { DeepSpoVisual } from './visuals/DeepSpoVisual';
+import { ExpenseTrackerVisual } from './visuals/ExpenseTrackerVisual';
 
 export const Projects: React.FC = () => {
+  const [expandedArchiveId, setExpandedArchiveId] = useState<string | null>(null);
+
+  const toggleArchive = (id: string) => {
+    setExpandedArchiveId(prev => (prev === id ? null : id));
+  };
+
   return (
-    <section id="projects" className="py-24 bg-slate-850 scroll-mt-28">
+    <section id="work" className="py-24 border-b border-paper-border">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-mono font-bold text-white mb-12 flex items-center gap-3">
-          <span className="text-electric-400">03.</span> Featured Projects
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {projectData.map((project, index) => (
-            <div 
-              key={index} 
-              className="group relative bg-slate-900 rounded-lg p-8 border border-slate-800 hover:border-electric-400 transition-all duration-300 flex flex-col h-full hover:-translate-y-1 hover:shadow-xl hover:shadow-electric-400/5"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className="text-electric-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </div>
-                <div className="flex gap-4">
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-electric-400 transition-all duration-300 hover:scale-125"
-                    aria-label={`View code for ${project.title}`}
-                  >
-                    <Github size={20} />
-                  </a>
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-electric-400 transition-all duration-300 hover:scale-125"
-                    aria-label={`External link for ${project.title}`}
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                </div>
-              </div>
-
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-electric-400 transition-all duration-300 group-hover:scale-105 origin-left">
-                {project.title}
-              </h3>
-              
-              <p className="text-slate-400 mb-6 flex-grow leading-relaxed text-sm">
-                {project.description}
-              </p>
-
-              <div className="mb-6">
-                 <ul className="flex flex-wrap gap-3 text-xs font-mono text-slate-500">
-                  {project.tech.map(t => (
-                    <li key={t} className="bg-slate-800 px-2 py-1 rounded text-slate-300">
-                      {t}
-                    </li>
-                  ))}
-                 </ul>
-              </div>
-
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center px-4 py-2 border border-slate-700 rounded text-sm font-mono text-slate-300 group-hover:bg-electric-400/10 group-hover:border-electric-400 group-hover:text-electric-400 transition-all"
-              >
-                View Code
-              </a>
-            </div>
-          ))}
+        
+        {/* Section Header */}
+        <div className="pb-8 mb-16 border-b border-paper-border">
+          <div className="font-mono text-xs text-cobalt font-semibold tracking-wider mb-2">
+            01 / SELECTED WORK
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold text-ink tracking-tight mb-2">
+            Selected work.
+          </h2>
+          <p className="font-serif italic text-xl sm:text-2xl text-ink-secondary">
+            Different problems. Different approaches. Built to work.
+          </p>
         </div>
+
+        {/* Featured Projects: Editorial Asymmetric Layout */}
+        <div className="space-y-20 mb-24">
+          {FEATURED_PROJECTS.map((project: Project, index: number) => {
+            const isReversed = index % 2 !== 0;
+
+            return (
+              <article
+                key={project.id}
+                className="pt-6 border-t border-paper-border"
+              >
+                {/* Project Header Bar */}
+                <div className="flex flex-wrap items-baseline justify-between gap-4 pb-4 mb-8 border-b border-paper-border">
+                  <div className="font-mono text-xs text-ink-muted">
+                    {project.number}
+                  </div>
+                  <div className="font-mono text-xs text-cobalt font-medium">
+                    {project.category}
+                  </div>
+                </div>
+
+                {/* 2-Column Split: Editorial Documentation & Interactive Custom Visual */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                  
+                  {/* Text Column */}
+                  <div className={`lg:col-span-5 space-y-5 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-sans font-bold text-ink tracking-tight mb-3">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-ink-secondary leading-relaxed font-normal">
+                        {project.summary}
+                      </p>
+                    </div>
+
+                    {/* Technical Approach block */}
+                    <div className="bg-paper p-4 rounded border border-paper-border">
+                      <div className="font-mono text-[11px] text-ink-muted uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                        <Code2 size={13} className="text-cobalt" />
+                        <span>Technical Approach & Implementation:</span>
+                      </div>
+                      <p className="text-xs text-ink-secondary leading-relaxed">
+                        {project.technicalApproach}
+                      </p>
+                    </div>
+
+                    {/* Technologies: Unboxed text with typographic separators */}
+                    <div>
+                      <div className="font-mono text-[11px] text-ink-muted uppercase tracking-wider mb-2">
+                        Core Technologies:
+                      </div>
+                      <div className="flex flex-wrap items-center gap-y-1 gap-x-2 text-xs font-mono text-ink-secondary">
+                        {project.technologies.map((tech, idx) => (
+                          <React.Fragment key={tech}>
+                            <span className="text-ink font-medium">{tech}</span>
+                            {idx < project.technologies.length - 1 && (
+                              <span className="text-paper-darkborder" aria-hidden="true">·</span>
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Links: View source ↗ */}
+                    <div className="pt-2 flex items-center gap-4">
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink text-paper text-xs font-sans font-medium rounded hover:bg-cobalt transition-colors duration-200"
+                        aria-label={`View source for ${project.title}`}
+                      >
+                        <Github size={14} />
+                        <span>View source</span>
+                        <ArrowUpRight size={13} />
+                      </a>
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 border border-paper-darkborder text-ink text-xs font-sans font-medium rounded hover:border-cobalt hover:text-cobalt transition-colors duration-200"
+                        >
+                          <ExternalLink size={14} />
+                          <span>Live Demo</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Visual Representation Column */}
+                  <div className={`lg:col-span-7 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                    {project.visualType === 'plant-disease' && <PlantDiseaseVisual />}
+                    {project.visualType === 'deep-spo' && <DeepSpoVisual />}
+                    {project.visualType === 'expense-flow' && <ExpenseTrackerVisual />}
+                  </div>
+
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Compact Archive for Additional Work */}
+        <div className="pt-16 border-t-2 border-paper-darkborder">
+          <div className="flex flex-wrap items-baseline justify-between gap-2 mb-6">
+            <div>
+              <div className="font-mono text-xs text-cobalt font-semibold tracking-wider mb-1">
+                02 / SYSTEMS ARCHIVE
+              </div>
+              <h3 className="text-2xl font-sans font-bold text-ink tracking-tight">
+                Additional engineering projects & contributions.
+              </h3>
+            </div>
+            <span className="font-mono text-xs text-ink-muted">
+              {ARCHIVE_PROJECTS.length} REPOSITORIES INDEXED
+            </span>
+          </div>
+
+          <p className="text-sm text-ink-secondary mb-8 max-w-2xl font-sans">
+            Lower-level systems projects, algorithmic traversals, and open-source contributions. Click any entry to inspect implementation details.
+          </p>
+
+          {/* Archive Rows */}
+          <div className="border-t border-paper-border divide-y divide-paper-border bg-paper-card rounded-lg overflow-hidden border">
+            {ARCHIVE_PROJECTS.map((archive: ArchiveProject) => {
+              const isExpanded = expandedArchiveId === archive.id;
+
+              return (
+                <div
+                  key={archive.id}
+                  className="transition-colors hover:bg-paper"
+                >
+                  <div
+                    onClick={() => toggleArchive(archive.id)}
+                    className="p-4 sm:p-5 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  >
+                    <div className="flex-grow space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-sans font-bold text-base text-ink hover:text-cobalt transition-colors">
+                          {archive.title}
+                        </span>
+                        <span className="font-mono text-[11px] text-ink-muted">
+                          / {archive.category}
+                        </span>
+                      </div>
+                      <p className="text-xs text-ink-secondary leading-relaxed max-w-3xl">
+                        {archive.description}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-4 shrink-0">
+                      <a
+                        href={archive.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 font-mono text-xs text-cobalt hover:text-cobalt-hover font-medium underline underline-offset-4"
+                        aria-label={`View code for ${archive.title}`}
+                      >
+                        <span>Inspect code</span>
+                        <ArrowUpRight size={13} />
+                      </a>
+
+                      <button
+                        type="button"
+                        className="text-ink-muted hover:text-ink p-1 rounded"
+                        aria-label={isExpanded ? "Collapse details" : "Expand details"}
+                      >
+                        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Expandable Architecture Note */}
+                  {isExpanded && (
+                    <div className="px-5 pb-5 pt-1 bg-paper border-t border-paper-border space-y-3">
+                      <div className="bg-paper-card p-3 rounded border border-paper-border text-xs">
+                        <div className="font-mono text-[10px] text-cobalt uppercase tracking-wider mb-1">
+                          Architecture & Concurrency Note:
+                        </div>
+                        <p className="text-ink-secondary text-xs leading-relaxed font-sans">
+                          {archive.architectureNote}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono text-ink-secondary">
+                        <span className="text-ink-muted">Stack:</span>
+                        {archive.technologies.map((t, idx) => (
+                          <span key={t} className="text-ink">
+                            {t}{idx < archive.technologies.length - 1 ? ' ·' : ''}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
     </section>
   );

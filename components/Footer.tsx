@@ -1,44 +1,77 @@
-import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { PERSONAL_INFO } from '../portfolioData';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-slate-950 py-12 border-t border-slate-900">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <div className="flex justify-center gap-8 mb-8">
-          <a 
-            href="https://github.com/spacedragonx" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-electric-400 transition-colors transform hover:scale-110"
-            aria-label="GitHub"
-          >
-            <Github size={24} />
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/onkar-patil-6862b22a5/" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-electric-400 transition-colors transform hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={24} />
-          </a>
-          <a 
-            href="mailto:onkarpatil729@gmail.com" 
-            className="text-slate-400 hover:text-electric-400 transition-colors transform hover:scale-110"
-            aria-label="Email Me"
-          >
-            <Mail size={24} />
-          </a>
+    <footer className="py-12 bg-paper text-ink font-sans text-xs">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-paper-border">
+          
+          {/* Brand & Note */}
+          <div className="space-y-1 text-center md:text-left">
+            <div className="font-sans font-bold tracking-tight text-ink uppercase text-sm">
+              {PERSONAL_INFO.name}
+            </div>
+            <p className="text-ink-secondary text-xs">
+              Thoughtful engineering, documented through work.
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-6 font-mono text-xs text-ink-muted">
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cobalt transition-colors"
+            >
+              GitHub
+            </a>
+            <span className="text-paper-darkborder">/</span>
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cobalt transition-colors"
+            >
+              LinkedIn
+            </a>
+            <span className="text-paper-darkborder">/</span>
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="hover:text-cobalt transition-colors"
+            >
+              Email
+            </a>
+          </div>
+
+          {/* Back to top */}
+          <div>
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1.5 font-mono text-xs text-ink-secondary hover:text-cobalt transition-colors"
+            >
+              <span>Back to top</span>
+              <ArrowUp size={13} />
+            </button>
+          </div>
+
         </div>
-        
-        <p className="font-mono text-sm text-slate-500">
-          Designed & Built by <span className="text-electric-400">Onkar Bajirao Patil</span>
-        </p>
-        <p className="text-xs text-slate-600 mt-2">
-          © {new Date().getFullYear()} All rights reserved.
-        </p>
+
+        {/* Colophon */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-ink-muted">
+          <div>
+            © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
+          </div>
+          <div>
+            TYPESET IN PLUS JAKARTA SANS & JETBRAINS MONO
+          </div>
+        </div>
       </div>
     </footer>
   );

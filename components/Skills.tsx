@@ -1,94 +1,90 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { SKILL_GROUPS } from '../portfolioData';
+import { Terminal, Cpu, Database, Wrench } from 'lucide-react';
 
-type SkillCategory = {
-  title: string;
-  skills: string[];
-};
-
-const categories: SkillCategory[] = [
-  {
-    title: "Languages",
-    skills: ["C++ (11/14/17/20)", "C", "Python", "JavaScript", "SQL"]
-  },
-  {
-    title: "Core Concepts",
-    skills: ["Multithreading", "STL", "Data Structures", "Algorithms", "OOP", "System Design", "Memory Management"]
-  },
-  {
-    title: "Tools & DevOps",
-    skills: ["Git", "Docker", "CMake", "GDB", "Google Cloud Platform", "Linux/Bash", "CI/CD"]
-  },
-  {
-    title: "Libraries & Frameworks",
-    skills: ["PyTorch", "TensorFlow", "Boost", "OpenCV", "Qt"]
-  }
-];
+const ICONS = [Terminal, Cpu, Database, Wrench];
 
 export const Skills: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // Animate only once when it comes into view
-        }
-      },
-      {
-        threshold: 0.15, // Trigger when 15% of the section is visible
-        rootMargin: "0px 0px -50px 0px"
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-24 bg-slate-900 scroll-mt-28">
+    <section id="skills" className="py-24 border-b border-paper-border">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 
-          className={`text-3xl font-mono font-bold text-white mb-12 flex items-center gap-3 transition-all duration-700 transform ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-          }`}
-        >
-          <span className="text-electric-400">02.</span> Technical Arsenal
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {categories.map((category, index) => (
-            <div 
-              key={index} 
-              className={`bg-slate-850 p-8 rounded-lg border border-slate-800 hover:border-slate-700 transition-all duration-700 ease-out transform
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
-              `}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <h3 className="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-2 inline-block">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="px-3 py-1 text-sm font-mono text-electric-400 bg-electric-400/5 rounded border border-electric-400/20 hover:bg-electric-400/10 transition-colors cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+        
+        {/* Section Header */}
+        <div className="pb-8 mb-16 border-b border-paper-border">
+          <div className="font-mono text-xs text-cobalt font-semibold tracking-wider mb-2">
+            03 / TECHNICAL REPERTOIRE
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold text-ink tracking-tight mb-2">
+            Skills & technical toolkit.
+          </h2>
+          <p className="font-serif italic text-xl sm:text-2xl text-ink-secondary">
+            Verified across production code, systems projects, and machine learning pipelines.
+          </p>
         </div>
+
+        {/* Typographic Grouping Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {SKILL_GROUPS.map((group, index) => {
+            const Icon = ICONS[index % ICONS.length];
+
+            return (
+              <div
+                key={group.category}
+                className="bg-paper-card p-6 rounded-lg border border-paper-border flex flex-col justify-between"
+              >
+                <div>
+                  {/* Category Header */}
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-paper-border">
+                    <div className="flex items-center gap-2">
+                      <Icon size={16} className="text-cobalt" />
+                      <h3 className="font-sans font-bold text-base text-ink">
+                        {group.category}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-ink-muted">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  {/* Clean unboxed inline labels with typographic separators */}
+                  <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-sm font-mono text-ink-secondary leading-relaxed">
+                    {group.items.map((item, idx) => (
+                      <React.Fragment key={item}>
+                        <span className="text-ink hover:text-cobalt transition-colors select-all">
+                          {item}
+                        </span>
+                        {idx < group.items.length - 1 && (
+                          <span className="text-paper-darkborder" aria-hidden="true">·</span>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-3 border-t border-paper-border font-mono text-[11px] text-ink-muted flex items-center justify-between">
+                  <span>VERIFIED PROFICIENCY</span>
+                  <span>{group.items.length} TECHNOLOGIES</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Engineering standards note */}
+        <div className="mt-12 bg-paper p-5 rounded-lg border border-paper-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-sans text-ink-secondary">
+          <div className="space-y-0.5">
+            <span className="font-mono text-ink font-semibold uppercase text-[11px] block">
+              Pragmatic Engineering Standard:
+            </span>
+            <p>
+              Tools are chosen to minimize cognitive overhead, enforce memory safety, and maximize measurable performance—not to pad a resume.
+            </p>
+          </div>
+          <div className="font-mono text-[11px] text-ink-muted shrink-0">
+            FIELD REF: SPEC-2026
+          </div>
+        </div>
+
       </div>
     </section>
   );
